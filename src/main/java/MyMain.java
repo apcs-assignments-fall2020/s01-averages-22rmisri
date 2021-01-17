@@ -36,19 +36,44 @@ public class MyMain {
         }
         return median;
     }
-        
+
     // Returns the mode of the 2D array mat
     public static double mode(double[][] mat) { 
-    
-       
-        return -1.0;
+        int size = mat.length * mat[0].length;
+        int c1 = 0;
+        double [] arr = new double [size];
+        for (int row = 0; row < mat.length; row++) {
+            for (int col = 0; col < mat[0].length; col++) {
+                arr[c1] = mat[row][col];
+                c1 = c1 + 1;
+            }
+        }
+        int c2 = 0;
+        double mode = 0.0;
+        for (int i = 0; i < arr.length; i++) {
+            int c = 0;
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    c = c + 1;
+                }
+            }
+            if (c > c2) {
+                c2 = c;
+                mode = arr[i];
+            }
+        }
+        return mode;
     }
 
 
     public static void main(String[] args) {
-     
-      
-       
-       // Write some code here to test your methods!
+        double[][] m4 = {
+        {1,  2,  2,  2,  6},
+        {7,  9,  10, 11, 11},
+        {11, 11, 17, 18, 20}
+        };
+        System.out.println(mean(m4));
+        System.out.println(median(m4));
+        System.out.println(mode(m4));
     }
 }
